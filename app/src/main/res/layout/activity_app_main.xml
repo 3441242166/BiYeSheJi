@@ -13,7 +13,7 @@
         android:layout_weight="1" />
 
 
-    <android.support.design.widget.BottomNavigationView
+    <com.google.android.material.bottomnavigation.BottomNavigationView
         app:itemBackground="@null"
         android:id="@+id/ac_main_bottom"
         android:layout_width="match_parent"

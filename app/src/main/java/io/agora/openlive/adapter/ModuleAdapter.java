@@ -1,8 +1,8 @@
 package io.agora.openlive.adapter;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
-import android.widget.ImageView;
+
+import androidx.annotation.Nullable;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;

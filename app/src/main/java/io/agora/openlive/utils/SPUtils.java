@@ -2,7 +2,8 @@ package io.agora.openlive.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.support.annotation.NonNull;
+
+import androidx.annotation.NonNull;
 
 import com.google.gson.Gson;
 
@@ -23,7 +24,7 @@ public class SPUtils {
         return sp = context.getSharedPreferences(FILE_NAME, Context.MODE_PRIVATE);
     }
 
-    public static <E>void put(Context context,@NonNull String key,@NonNull E value) {
+    public static <E>void put(Context context, @NonNull String key, @NonNull E value) {
         SharedPreferences.Editor editor = init(context).edit();
         if (value instanceof String||value instanceof Integer||value instanceof Boolean||
                 value instanceof Float|| value instanceof Long||value instanceof Double) {
