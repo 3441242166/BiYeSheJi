@@ -43,8 +43,6 @@ public class AppMainActivity extends AppCompatActivity {
         initEvent();
     }
 
-
-
     private void initEvent() {
         viewPager.setOverScrollMode(View.OVER_SCROLL_NEVER);
 

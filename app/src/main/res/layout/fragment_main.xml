@@ -11,13 +11,13 @@
 
     </androidx.recyclerview.widget.RecyclerView>
 
-    <Button
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add_live"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:layout_marginRight="30dp"
         android:layout_marginBottom="30dp"
-        android:layout_width="70dp"
-        android:layout_height="70dp"/>
+        android:layout_width="50dp"
+        android:layout_height="50dp"/>
 
 </RelativeLayout>

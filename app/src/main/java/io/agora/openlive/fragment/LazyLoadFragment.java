@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import org.greenrobot.eventbus.EventBus;
+
 /**
  * 懒加载的Fragment
  */
@@ -28,6 +30,7 @@ public abstract class LazyLoadFragment extends Fragment {
         isInit = true;
         /**初始化的时候去加载数据**/
         Log.i(TAG, "onCreateView: "+ "  class: "+getClass().getName());
+        EventBus.builder().build().register(this);
         lazyLoad(savedInstanceState);
         return view;
     }
@@ -114,6 +117,7 @@ public abstract class LazyLoadFragment extends Fragment {
 
     @Override
     public void onDestroy() {
+        EventBus.builder().build().unregister(this);
         super.onDestroy();
     }
 

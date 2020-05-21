@@ -24,11 +24,12 @@ public class LoginActivity extends AppCompatActivity {
         findViewById(R.id.login).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (count.getText().toString().equals("12345") && password.getText().toString().equals("admin")) {
-                    startActivity(new Intent(LoginActivity.this, AppMainActivity.class));
-                } else {
-                    Toast.makeText(LoginActivity.this, "账号或密码错误", Toast.LENGTH_SHORT).show();
-                }
+                startActivity(new Intent(LoginActivity.this, AppMainActivity.class));
+//                if (count.getText().toString().equals("12345") && password.getText().toString().equals("admin")) {
+//                    startActivity(new Intent(LoginActivity.this, AppMainActivity.class));
+//                } else {
+//                    Toast.makeText(LoginActivity.this, "账号或密码错误", Toast.LENGTH_SHORT).show();
+//                }
             }
         });
     }

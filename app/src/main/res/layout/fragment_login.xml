@@ -18,6 +18,7 @@
 
             <EditText
                 android:id="@+id/count"
+                android:hint="账号"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -25,6 +26,7 @@
 
             <EditText
                 android:id="@+id/password"
+                android:hint="密码"
                 android:layout_width="match_parent"
                 android:layout_marginBottom="20dp"
                 android:layout_margin="10dp"
@@ -32,6 +34,7 @@
 
             <Button
                 android:id="@+id/login"
+                android:text="登陆"
                 android:layout_width="match_parent"
                 android:layout_marginBottom="20dp"
                 android:layout_margin="10dp"
