@@ -25,6 +25,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import io.agora.openlive.R;
+import io.agora.rtc.Constants;
 
 public class MainActivity extends BaseActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
@@ -103,15 +104,6 @@ public class MainActivity extends BaseActivity {
         boolean inputShown = mDisplayMetrics.heightPixels - visibleHeight > MIN_INPUT_METHOD_HEIGHT;
         mLastVisibleHeight = visibleHeight;
 
-        // Log.i(TAG, "onGlobalLayout:" + inputShown +
-        //        "|" + getWindow().getDecorView().getRootView().getViewTreeObserver());
-
-        // There is no official way to determine whether the
-        // input method dialog has already shown.
-        // This is a workaround, and if the visible content
-        // height is significantly less than the screen height,
-        // we should know that the input method dialog takes
-        // up some screen space.
         if (inputShown) {
             if (mLogo.getVisibility() == View.VISIBLE) {
                 mBodyLayout.animate().translationYBy(-mLogo.getMeasuredHeight())
@@ -144,42 +136,6 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void onGlobalLayoutCompleted() {
-        adjustViewPositions();
-    }
-
-    private void adjustViewPositions() {
-        // Setting btn move downward away the status bar
-        ImageView settingBtn = findViewById(R.id.setting_button);
-        RelativeLayout.LayoutParams param = (RelativeLayout.LayoutParams) settingBtn.getLayoutParams();
-        param.topMargin += mStatusBarHeight;
-        settingBtn.setLayoutParams(param);
-
-        // Logo is 0.48 times the screen width
-        // ImageView logo = findViewById(R.id.main_logo);
-        param = (RelativeLayout.LayoutParams) mLogo.getLayoutParams();
-        int size = (int) (mDisplayMetrics.widthPixels * 0.48);
-        param.width = size;
-        param.height = size;
-        mLogo.setLayoutParams(param);
-
-        // Bottom margin of the main body should be two times it's top margin.
-        param = (RelativeLayout.LayoutParams) mBodyLayout.getLayoutParams();
-        param.topMargin = (mDisplayMetrics.heightPixels -
-                mBodyLayout.getMeasuredHeight() - mStatusBarHeight) / 3;
-        mBodyLayout.setLayoutParams(param);
-        mBodyDefaultMarginTop = param.topMargin;
-
-        // The width of the start button is roughly 0.72
-        // times the width of the screen
-        mStartBtn = findViewById(R.id.start_broadcast_button);
-        param = (RelativeLayout.LayoutParams) mStartBtn.getLayoutParams();
-        param.width = (int) (mDisplayMetrics.widthPixels * 0.72);
-        mStartBtn.setLayoutParams(param);
-    }
-
-    public void onSettingClicked(View view) {
-        Intent i = new Intent(this, SettingsActivity.class);
-        startActivity(i);
     }
 
     public void onStartBroadcastClicked(View view) {
@@ -241,9 +197,11 @@ public class MainActivity extends BaseActivity {
     }
 
     public void gotoRoleActivity() {
-        Intent intent = new Intent(MainActivity.this, RoleActivity.class);
         String room = mTopicEdit.getText().toString();
         config().setChannelName(room);
+        Intent intent = new Intent(MainActivity.this, LiveActivity.class);
+        intent.putExtra(io.agora.openlive.Constants.KEY_CLIENT_ROLE, Constants.CLIENT_ROLE_BROADCASTER);
+        intent.setClass(getApplicationContext(), LiveActivity.class);
         startActivity(intent);
     }
 
