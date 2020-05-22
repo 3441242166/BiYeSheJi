@@ -18,6 +18,8 @@ public class AgoraApplication extends Application {
     private AgoraEventHandler mHandler = new AgoraEventHandler();
     private StatsManager mStatsManager = new StatsManager();
 
+    public static AgoraApplication application = null;
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -29,7 +31,7 @@ public class AgoraApplication extends Application {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        application = this;
         initConfig();
     }
 

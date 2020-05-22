@@ -7,9 +7,11 @@ public class RoomBean {
 
     public String name;
     public int state;
+    public String code;
 
-    public RoomBean(String name, int state) {
+    public RoomBean(String name, int state, String code) {
         this.state = state;
         this.name = name;
+        this.code = code;
     }
 }

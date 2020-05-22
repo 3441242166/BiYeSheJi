@@ -6,7 +6,7 @@ import android.os.Bundle;
 import org.greenrobot.eventbus.Subscribe;
 
 import io.agora.openlive.R;
-import io.agora.openlive.event.RoomEvent;
+import io.agora.openlive.event.RoomListUpdateEvent;
 
 
 public class UserMessageFragment extends LazyLoadFragment {
@@ -26,7 +26,7 @@ public class UserMessageFragment extends LazyLoadFragment {
     }
 
     @Subscribe
-    public void updateRoomListEvent(RoomEvent event) {
+    public void updateRoomListEvent(RoomListUpdateEvent event) {
 
     }
 
