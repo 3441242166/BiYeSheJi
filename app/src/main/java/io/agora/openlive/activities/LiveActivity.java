@@ -39,12 +39,6 @@ public class LiveActivity extends RtcBaseActivity {
     }
 
     private void initUI() {
-        TextView roomName = findViewById(R.id.live_room_name);
-        roomName.setText(config().getChannelName());
-        roomName.setSelected(true);
-        
-        initUserIcon();
-
         int role = getIntent().getIntExtra(
                 io.agora.openlive.Constants.KEY_CLIENT_ROLE,
                 Constants.CLIENT_ROLE_AUDIENCE);
@@ -66,14 +60,6 @@ public class LiveActivity extends RtcBaseActivity {
 
         rtcEngine().setClientRole(role);
         if (isBroadcaster) startBroadcast();
-    }
-
-    private void initUserIcon() {
-        Bitmap origin = BitmapFactory.decodeResource(getResources(), R.drawable.fake_user_icon);
-        RoundedBitmapDrawable drawable = RoundedBitmapDrawableFactory.create(getResources(), origin);
-        drawable.setCircular(true);
-        ImageView iconView = findViewById(R.id.live_name_board_icon);
-        iconView.setImageDrawable(drawable);
     }
 
     private void initData() {
