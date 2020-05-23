@@ -21,7 +21,9 @@ public class MessageAdapter extends BaseQuickAdapter<Message, BaseViewHolder> {
 
     @Override
     protected void convert(BaseViewHolder helper, Message item) {
-        // helper.setText(R.id.room_name, item.name);
-
+        helper.setText(R.id.address, item.address);
+        helper.setText(R.id.time, item.time);
+        helper.setText(R.id.notice, item.notice);
+        helper.setText(R.id.state, item.state);
     }
 }
