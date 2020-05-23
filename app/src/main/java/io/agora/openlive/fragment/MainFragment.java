@@ -33,9 +33,6 @@ import io.agora.openlive.event.RoomListUpdateEvent;
 import io.agora.openlive.utils.PrefManager;
 import io.agora.rtc.Constants;
 
-import static io.agora.openlive.constant.AppConstant.ROOM_LIST_KEY;
-import static io.agora.openlive.utils.PrefManager.ROOM_LIST;
-
 /**
  * Created by wanhao on 2018/2/23.
  */
@@ -73,7 +70,7 @@ public class MainFragment extends LazyLoadFragment {
         });
         adapter.setOnItemLongClickListener(new OnItemLongClickListener() {
             @Override
-            public boolean onItemLongClick(@NonNull BaseQuickAdapter adapter, @NonNull View view, int position) {
+            public boolean onItemLongClick(@NonNull final BaseQuickAdapter adapter, @NonNull View view, final int position) {
                 final String[] items = {"置顶", "屏蔽", "删除"};
                 AlertDialog.Builder listDialog =
                         new AlertDialog.Builder(getContext());
@@ -82,7 +79,21 @@ public class MainFragment extends LazyLoadFragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         switch (which) {
+                            case 0: {
+                                RoomBean temp = data.get(position);
+                                data.remove(position);
+                                data.add(0, temp);
+                                PrefManager.saveRoomList(getContext(), data);
+                                adapter.setNewInstance(data);
+                            }
+                            case 1: {
 
+                            }
+                            case 2: {
+                                data.remove(position);
+                                PrefManager.saveRoomList(getContext(), data);
+                                adapter.setNewInstance(data);
+                            }
                         }
                     }
                 });

@@ -17,6 +17,7 @@ import java.util.List;
 
 import io.agora.openlive.R;
 import io.agora.openlive.fragment.MainFragment;
+import io.agora.openlive.fragment.MessageListFragment;
 import io.agora.openlive.fragment.UserMessageFragment;
 import io.agora.openlive.view.NoScrollViewPager;
 
@@ -27,6 +28,7 @@ public class AppMainActivity extends AppCompatActivity {
 
     MainFragment courseFragment;
     UserMessageFragment userMessageFragment;
+    MessageListFragment messageListFragment;
 
     private List<Fragment> fragmentList;
     private FragmentPagerAdapter adapter;
@@ -53,8 +55,11 @@ public class AppMainActivity extends AppCompatActivity {
                     case R.id.main_menu_home:
                         viewPager.setCurrentItem(0);
                         return true;
-                    case R.id.main_menu_my:
+                    case R.id.main_menu_message:
                         viewPager.setCurrentItem(1);
+                        return true;
+                    case R.id.main_menu_my:
+                        viewPager.setCurrentItem(2);
                         return true;
                 }
                 return false;
@@ -74,6 +79,9 @@ public class AppMainActivity extends AppCompatActivity {
                         navigation.setSelectedItemId(R.id.main_menu_home);
                         break;
                     case 1:
+                        navigation.setSelectedItemId(R.id.main_menu_message);
+                        break;
+                    case 2:
                         navigation.setSelectedItemId(R.id.main_menu_my);
                         break;
                 }
@@ -90,8 +98,10 @@ public class AppMainActivity extends AppCompatActivity {
         fragmentList = new ArrayList<>();
         courseFragment = new MainFragment();
         userMessageFragment = new UserMessageFragment();
+        messageListFragment = new MessageListFragment();
 
         fragmentList.add(courseFragment);
+        fragmentList.add(messageListFragment);
         fragmentList.add(userMessageFragment);
 
         adapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
