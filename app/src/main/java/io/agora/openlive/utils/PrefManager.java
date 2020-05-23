@@ -6,11 +6,15 @@ import android.content.SharedPreferences;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import org.greenrobot.eventbus.EventBus;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import io.agora.openlive.Constants;
 import io.agora.openlive.bean.Message;
 import io.agora.openlive.bean.RoomBean;
+import io.agora.openlive.event.RoomListUpdateEvent;
 
 
 public class PrefManager {
@@ -36,18 +40,23 @@ public class PrefManager {
         List<RoomBean> list = getRoomList(context);
         list.add(bean);
         put(context, ROOM_LIST, new Gson().toJson(list));
+        EventBus.getDefault().post(new RoomListUpdateEvent());
     }
 
     public static List<RoomBean> getRoomList(Context context) {
         String liveJson = PrefManager.get(context, ROOM_LIST);
         List<RoomBean> updateData = new Gson().fromJson(liveJson, new TypeToken<List<RoomBean>>() {
         }.getType());
+        if (updateData == null) {
+            return new ArrayList<>();
+        }
         return updateData;
     }
 
     public static void saveRoomList(Context context, List<RoomBean> data) {
         String list = new Gson().toJson(data);
         put(context, ROOM_LIST, list);
+        EventBus.getDefault().post(new RoomListUpdateEvent());
     }
 
     public static List<Message> getMessageList(Context context) {

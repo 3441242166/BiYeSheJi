@@ -21,6 +21,7 @@ import com.google.gson.reflect.TypeToken;
 import org.greenrobot.eventbus.Subscribe;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import io.agora.openlive.AgoraApplication;
@@ -74,7 +75,7 @@ public class MainFragment extends LazyLoadFragment {
         adapter.setOnItemLongClickListener(new OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(@NonNull final BaseQuickAdapter adapter, @NonNull View view, final int position) {
-                final String[] items = {"置顶", "屏蔽", "删除"};
+                final String[] items = {data.get(position).isTop ? "取消置顶" : "置顶", "屏蔽", "删除"};
                 AlertDialog.Builder listDialog =
                         new AlertDialog.Builder(getContext());
                 listDialog.setTitle("实验室");
@@ -83,20 +84,19 @@ public class MainFragment extends LazyLoadFragment {
                     public void onClick(DialogInterface dialog, int which) {
                         switch (which) {
                             case 0: {
-                                RoomBean temp = data.get(position);
-                                data.remove(position);
-                                data.add(0, temp);
+                                data.get(position).isTop = !data.get(position).isTop;
                                 PrefManager.saveRoomList(getContext(), data);
-                                adapter.setNewInstance(data);
                             }
+                            break;
                             case 1: {
 
                             }
+                            break;
                             case 2: {
                                 data.remove(position);
                                 PrefManager.saveRoomList(getContext(), data);
-                                adapter.setNewInstance(data);
                             }
+                            break;
                         }
                     }
                 });
@@ -122,18 +122,19 @@ public class MainFragment extends LazyLoadFragment {
 
     private void updateNewData() {
         List<RoomBean> updateData = PrefManager.getRoomList(getContext());
-        List<RoomBean> mockData = new ArrayList<>();
-        mockData.add(new RoomBean("实验室401", 0, "wanhao"));
-        mockData.add(new RoomBean("实验室402", 0, "wanhao"));
-        mockData.add(new RoomBean("实验室403", 0, "wanhao"));
-        mockData.add(new RoomBean("实验室404", 0, "wanhao"));
-        mockData.add(new RoomBean("实验室405", 0, "wanhao"));
-        mockData.add(new RoomBean("实验室406", 0, "wanhao"));
-        mockData.add(new RoomBean("实验室407", 0, "wanhao"));
-        mockData.add(new RoomBean("实验室408", 0, "wanhao"));
-        mockData.add(new RoomBean("实验室409", 0, "wanhao"));
-        mockData.add(new RoomBean("实验室410", 0, "wanhao"));
-        mockData.add(new RoomBean("实验室411", 0, "wanhao"));
+//        List<RoomBean> mockData = new ArrayList<>();
+//        mockData.add(new RoomBean("实验室401", 0, "wanhao"));
+//        mockData.add(new RoomBean("实验室402", 0, "wanhao"));
+//        mockData.add(new RoomBean("实验室403", 0, "wanhao"));
+//        mockData.add(new RoomBean("实验室404", 0, "wanhao"));
+//        mockData.add(new RoomBean("实验室405", 0, "wanhao"));
+//        mockData.add(new RoomBean("实验室406", 0, "wanhao"));
+//        mockData.add(new RoomBean("实验室407", 0, "wanhao"));
+//        mockData.add(new RoomBean("实验室408", 0, "wanhao"));
+//        mockData.add(new RoomBean("实验室409", 0, "wanhao"));
+//        mockData.add(new RoomBean("实验室410", 0, "wanhao"));
+//        mockData.add(new RoomBean("实验室411", 0, "wanhao"));
+        Collections.sort(updateData);
         data = updateData;
         adapter.setNewInstance(updateData);
     }

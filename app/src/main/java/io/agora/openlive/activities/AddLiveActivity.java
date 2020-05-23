@@ -47,7 +47,7 @@ public class AddLiveActivity extends AppCompatActivity {
 
         final EditText room_id = findViewById(R.id.room_id);
         final EditText room_password = findViewById(R.id.room_password);
-        Button add = findViewById(R.id.add);
+        Button add = findViewById(R.id.button);
 
         add.setOnClickListener(new View.OnClickListener() {
             @Override

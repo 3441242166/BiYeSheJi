@@ -30,7 +30,7 @@ public abstract class LazyLoadFragment extends Fragment {
         isInit = true;
         /**初始化的时候去加载数据**/
         Log.i(TAG, "onCreateView: "+ "  class: "+getClass().getName());
-        EventBus.builder().build().register(this);
+        EventBus.getDefault().register(this);
         lazyLoad(savedInstanceState);
         return view;
     }

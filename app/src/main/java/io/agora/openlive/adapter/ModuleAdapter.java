@@ -27,5 +27,10 @@ public class ModuleAdapter extends BaseQuickAdapter<RoomBean, BaseViewHolder> {
         } else {
             helper.findView(R.id.room_state).setBackgroundColor(Color.RED);
         }
+        if (item.isTop) {
+            helper.findView(R.id.item_layout).setBackgroundColor(Color.parseColor("#CCCCCC"));
+        } else {
+            helper.findView(R.id.item_layout).setBackgroundColor(Color.parseColor("#FFFFFF"));
+        }
     }
 }
