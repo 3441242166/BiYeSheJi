@@ -31,7 +31,7 @@ public class MessageListFragment extends LazyLoadFragment {
 
     @Override
     protected int setContentView() {
-        return R.layout.fragment_my;
+        return R.layout.fragment_message_list;
     }
 
     @Override
