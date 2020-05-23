@@ -1,5 +1,6 @@
 package io.agora.openlive.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -16,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.agora.openlive.R;
+import io.agora.openlive.activities.MessageDetailActivity;
 import io.agora.openlive.adapter.MessageAdapter;
 import io.agora.openlive.bean.Message;
 import io.agora.openlive.bean.RoomBean;
@@ -51,7 +53,7 @@ public class MessageListFragment extends LazyLoadFragment {
         adapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(@NonNull BaseQuickAdapter<?, ?> adapter, @NonNull View view, int position) {
-
+                startActivity(new Intent(getContext(), MessageDetailActivity.class));
             }
         });
     }
@@ -61,19 +63,21 @@ public class MessageListFragment extends LazyLoadFragment {
     }
 
     private void updateMessageData() {
-        // List<Message> updateData = PrefManager.getMessageList(getContext());
-        List<Message> mockData = new ArrayList<>();
-        mockData.add(new Message("实验室401", "2020.12.12 13:22:45", "未处理", "危急"));
-        mockData.add(new Message("实验室401", "2020.12.12 13:22:45", "未处理", "危急"));
-        mockData.add(new Message("实验室401", "2020.12.12 13:22:45", "未处理", "危急"));
-        mockData.add(new Message("实验室401", "2020.12.12 13:22:45", "未处理", "危急"));
-        mockData.add(new Message("实验室401", "2020.12.12 13:22:45", "未处理", "危急"));
-        mockData.add(new Message("实验室401", "2020.12.12 13:22:45", "未处理", "危急"));
-        mockData.add(new Message("实验室401", "2020.12.12 13:22:45", "未处理", "危急"));
-        mockData.add(new Message("实验室401", "2020.12.12 13:22:45", "未处理", "危急"));
-        mockData.add(new Message("实验室401", "2020.12.12 13:22:45", "未处理", "危急"));
-        data = mockData;
-        adapter.setNewInstance(mockData);
+        List<Message> updateData = PrefManager.getMessageList(getContext());
+        if (updateData == null) {
+            updateData = new ArrayList<>();
+            updateData.add(new Message("实验室401", "2020.12.12 13:22:45", "未处理", "危急"));
+            updateData.add(new Message("实验室402", "2020.12.12 13:22:45", "未处理", "危急"));
+            updateData.add(new Message("实验室401", "2020.12.12 13:22:45", "未处理", "危急"));
+            updateData.add(new Message("实验室401", "2020.12.12 13:22:45", "未处理", "危急"));
+            updateData.add(new Message("实验室401", "2020.12.12 13:22:45", "未处理", "危急"));
+            updateData.add(new Message("实验室401", "2020.12.12 13:22:45", "未处理", "危急"));
+            updateData.add(new Message("实验室401", "2020.12.12 13:22:45", "未处理", "危急"));
+            updateData.add(new Message("实验室401", "2020.12.12 13:22:45", "未处理", "危急"));
+            updateData.add(new Message("实验室401", "2020.12.12 13:22:45", "未处理", "危急"));
+        }
+        data = updateData;
+        adapter.setNewInstance(updateData);
     }
 
     @Subscribe
