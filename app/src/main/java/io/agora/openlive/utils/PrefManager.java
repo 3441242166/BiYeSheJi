@@ -14,6 +14,7 @@ import java.util.List;
 import io.agora.openlive.Constants;
 import io.agora.openlive.bean.Message;
 import io.agora.openlive.bean.RoomBean;
+import io.agora.openlive.event.MessageListUpdateEvent;
 import io.agora.openlive.event.RoomListUpdateEvent;
 
 
@@ -35,6 +36,8 @@ public class PrefManager {
         editor.putString(key, value);
         editor.apply();
     }
+
+    // ---------------------------------------------------------------------------------------------
 
     public static void addRoom(Context context, RoomBean bean) {
         List<RoomBean> list = getRoomList(context);
@@ -59,10 +62,41 @@ public class PrefManager {
         EventBus.getDefault().post(new RoomListUpdateEvent());
     }
 
+    // ---------------------------------------------------------------------------------------------
+
+    public static void addMessage(Context context, Message bean) {
+        List<Message> list = getMessageList(context);
+        list.add(bean);
+        put(context, MESSAGE_LIST, new Gson().toJson(list));
+        EventBus.getDefault().post(new MessageListUpdateEvent());
+    }
+
+    public static void saveMessageList(Context context, List<Message> data) {
+        String list = new Gson().toJson(data);
+        put(context, MESSAGE_LIST, list);
+        EventBus.getDefault().post(new MessageListUpdateEvent());
+    }
+
     public static List<Message> getMessageList(Context context) {
         String liveJson = PrefManager.get(context, MESSAGE_LIST);
         List<Message> updateData = new Gson().fromJson(liveJson, new TypeToken<List<Message>>() {
         }.getType());
         return updateData;
+    }
+
+    public static List<Message> getUnDealMessageList(Context context) {
+        String liveJson = PrefManager.get(context, MESSAGE_LIST);
+        List<Message> updateData = new Gson().fromJson(liveJson, new TypeToken<List<Message>>() {
+        }.getType());
+        List<Message> resultList = new ArrayList<>();
+        if (updateData != null) {
+            for (Message msg : updateData) {
+                if (msg.state.equals(Message.STATE_UN_DOING)) {
+                    resultList.add(msg);
+                }
+            }
+        }
+
+        return resultList;
     }
 }

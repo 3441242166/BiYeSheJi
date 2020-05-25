@@ -18,10 +18,12 @@
         android:label="@string/app_name"
         android:roundIcon="@drawable/ic_launcher"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".activities.MessageDetailActivity"></activity>
+        <activity android:name=".activities.DataActivity"></activity>
+        <activity android:name=".activities.HistoryActivity" />
+        <activity android:name=".activities.MessageDetailActivity" />
         <activity
             android:name=".activities.LoginActivity"
-            android:label="@string/app_name"
+            android:label="毕业设计"
             android:screenOrientation="fullSensor"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>

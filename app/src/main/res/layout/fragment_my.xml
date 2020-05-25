@@ -6,17 +6,18 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:layout_marginTop="44dp"
+        android:id="@+id/history"
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:layout_marginTop="44dp"
         android:orientation="horizontal">
 
         <TextView
-            android:paddingLeft="20dp"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center|left"
+            android:paddingLeft="20dp"
             android:text="报警记录"
             android:textSize="20dp" />
 
@@ -25,27 +26,27 @@
             android:layout_width="60dp"
             android:layout_height="match_parent"
             android:padding="15dp"
-            android:src="@drawable/btn_audio_disabled"
-            app:srcCompat="@drawable/ic_arrow_right" />
+            android:src="@drawable/ic_arrow_right" />
 
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#BFBFBF"/>
+        android:background="#BFBFBF" />
 
     <LinearLayout
+        android:id="@+id/data"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:orientation="horizontal">
 
         <TextView
-            android:paddingLeft="20dp"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center|left"
+            android:paddingLeft="20dp"
             android:text="数据统计"
             android:textSize="20dp" />
 
@@ -54,27 +55,28 @@
             android:layout_width="60dp"
             android:layout_height="match_parent"
             android:padding="15dp"
-            android:src="@drawable/btn_audio_disabled"
-            app:srcCompat="@drawable/ic_arrow_right" />
+            android:src="@drawable/ic_arrow_right" />
+
 
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#BFBFBF"/>
+        android:background="#BFBFBF" />
 
     <LinearLayout
+        android:id="@+id/setting"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:orientation="horizontal">
 
         <TextView
-            android:paddingLeft="20dp"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center|left"
+            android:paddingLeft="20dp"
             android:text="设置"
             android:textSize="20dp" />
 
@@ -83,28 +85,28 @@
             android:layout_width="60dp"
             android:layout_height="match_parent"
             android:padding="15dp"
-            android:src="@drawable/btn_audio_disabled"
-            app:srcCompat="@drawable/ic_arrow_right" />
+            android:src="@drawable/ic_arrow_right" />
 
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="#F4F4F4"/>
+        android:background="#F4F4F4" />
 
 
     <LinearLayout
+        android:id="@+id/logout"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:orientation="horizontal">
 
         <TextView
-            android:paddingLeft="20dp"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center|left"
+            android:paddingLeft="20dp"
             android:text="退出登陆"
             android:textSize="20dp" />
 
@@ -113,8 +115,7 @@
             android:layout_width="60dp"
             android:layout_height="match_parent"
             android:padding="15dp"
-            android:src="@drawable/btn_audio_disabled"
-            app:srcCompat="@drawable/ic_arrow_right" />
+            android:src="@drawable/ic_arrow_right" />
 
     </LinearLayout>
 

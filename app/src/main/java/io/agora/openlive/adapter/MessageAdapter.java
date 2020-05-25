@@ -25,5 +25,11 @@ public class MessageAdapter extends BaseQuickAdapter<Message, BaseViewHolder> {
         helper.setText(R.id.time, item.time);
         helper.setText(R.id.notice, item.notice);
         helper.setText(R.id.state, item.state);
+
+        if (item.isTop) {
+            helper.findView(R.id.item_layout).setBackgroundColor(Color.parseColor("#CCCCCC"));
+        } else {
+            helper.findView(R.id.item_layout).setBackgroundColor(Color.parseColor("#FFFFFF"));
+        }
     }
 }
