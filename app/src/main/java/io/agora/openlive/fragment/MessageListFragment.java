@@ -24,9 +24,7 @@ import io.agora.openlive.R;
 import io.agora.openlive.activities.MessageDetailActivity;
 import io.agora.openlive.adapter.MessageAdapter;
 import io.agora.openlive.bean.Message;
-import io.agora.openlive.bean.RoomBean;
 import io.agora.openlive.event.MessageListUpdateEvent;
-import io.agora.openlive.event.RoomListUpdateEvent;
 import io.agora.openlive.utils.PrefManager;
 
 public class MessageListFragment extends LazyLoadFragment {
@@ -58,6 +56,7 @@ public class MessageListFragment extends LazyLoadFragment {
         adapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(@NonNull BaseQuickAdapter<?, ?> adapter, @NonNull View view, int position) {
+                MessageDetailActivity.MessageUtil.tempMessage = data.get(position);
                 startActivity(new Intent(getContext(), MessageDetailActivity.class));
             }
         });
@@ -101,15 +100,15 @@ public class MessageListFragment extends LazyLoadFragment {
         List<Message> updateData = PrefManager.getUnDealMessageList(getContext());
         if (updateData.isEmpty()) {
             updateData = new ArrayList<>();
-            updateData.add(new Message("实验室401", "2020.12.12 13:22:45", Message.STATE_UN_DOING, "危急"));
-            updateData.add(new Message("实验室402", "2020.12.12 13:22:45", Message.STATE_UN_DOING, "危急"));
-            updateData.add(new Message("实验室401", "2020.12.12 13:22:45", Message.STATE_UN_DOING, "危急"));
-            updateData.add(new Message("实验室403", "2020.12.12 13:22:45", Message.STATE_UN_DOING, "危急"));
-            updateData.add(new Message("实验室402", "2020.12.12 13:22:45", Message.STATE_UN_DOING, "危急"));
-            updateData.add(new Message("实验室405", "2020.12.12 13:22:45", Message.STATE_UN_DOING, "危急"));
-            updateData.add(new Message("实验室402", "2020.12.12 13:22:45", Message.STATE_UN_DOING, "危急"));
-            updateData.add(new Message("实验室401", "2020.12.12 13:22:45", Message.STATE_UN_DOING, "危急"));
-            updateData.add(new Message("实验室403", "2020.12.12 13:22:45", Message.STATE_UN_DOING, "危急"));
+            updateData.add(new Message("实验室401", "2020.12.12 13:22:45", Message.STATE_UN_DOING, "P0"));
+            updateData.add(new Message("实验室402", "2020.12.12 13:22:45", Message.STATE_UN_DOING, "P4"));
+            updateData.add(new Message("实验室401", "2020.12.12 13:22:45", Message.STATE_UN_DOING, "P3"));
+            updateData.add(new Message("实验室403", "2020.12.12 13:22:45", Message.STATE_UN_DOING, "P1"));
+            updateData.add(new Message("实验室402", "2020.12.12 13:22:45", Message.STATE_UN_DOING, "P2"));
+            updateData.add(new Message("实验室405", "2020.12.12 13:22:45", Message.STATE_UN_DOING, "P1"));
+            updateData.add(new Message("实验室402", "2020.12.12 13:22:45", Message.STATE_UN_DOING, "P3"));
+            updateData.add(new Message("实验室401", "2020.12.12 13:22:45", Message.STATE_UN_DOING, "P2"));
+            updateData.add(new Message("实验室403", "2020.12.12 13:22:45", Message.STATE_UN_DOING, "P3"));
             PrefManager.saveMessageList(getContext(), updateData);
         }
         Collections.sort(updateData);

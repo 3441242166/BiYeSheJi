@@ -5,4 +5,12 @@
         <item>Enabled</item>
         <item>Disabled</item>
     </string-array>
+
+    <string-array name="message_state_array">
+        <item>全部</item>
+        <item>处理中</item>
+        <item>未处理</item>
+        <item>已结束</item>
+    </string-array>
+
 </resources>

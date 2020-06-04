@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -31,11 +32,11 @@ public class LoginActivity extends AppCompatActivity {
 
                 startActivity(new Intent(LoginActivity.this, AppMainActivity.class));
                 finish();
-//                if (count.getText().toString().equals("12345") && password.getText().toString().equals("admin")) {
-//                    startActivity(new Intent(LoginActivity.this, AppMainActivity.class));
-//                } else {
-//                    Toast.makeText(LoginActivity.this, "账号或密码错误", Toast.LENGTH_SHORT).show();
-//                }
+                if (count.getText().toString().equals("12345") && password.getText().toString().equals("admin")) {
+                    startActivity(new Intent(LoginActivity.this, AppMainActivity.class));
+                } else {
+                    Toast.makeText(LoginActivity.this, "账号或密码错误", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

@@ -85,13 +85,39 @@ public class PrefManager {
     }
 
     public static List<Message> getUnDealMessageList(Context context) {
-        String liveJson = PrefManager.get(context, MESSAGE_LIST);
-        List<Message> updateData = new Gson().fromJson(liveJson, new TypeToken<List<Message>>() {
-        }.getType());
+        List<Message> updateData = getMessageList(context);
         List<Message> resultList = new ArrayList<>();
         if (updateData != null) {
             for (Message msg : updateData) {
                 if (msg.state.equals(Message.STATE_UN_DOING)) {
+                    resultList.add(msg);
+                }
+            }
+        }
+
+        return resultList;
+    }
+
+    public static List<Message> getDoingMessageList(Context context) {
+        List<Message> updateData = getMessageList(context);
+        List<Message> resultList = new ArrayList<>();
+        if (updateData != null) {
+            for (Message msg : updateData) {
+                if (msg.state.equals(Message.STATE_DOING)) {
+                    resultList.add(msg);
+                }
+            }
+        }
+
+        return resultList;
+    }
+
+    public static List<Message> getFinishMessageList(Context context) {
+        List<Message> updateData = getMessageList(context);
+        List<Message> resultList = new ArrayList<>();
+        if (updateData != null) {
+            for (Message msg : updateData) {
+                if (msg.state.equals(Message.STATE_FINISH)) {
                     resultList.add(msg);
                 }
             }

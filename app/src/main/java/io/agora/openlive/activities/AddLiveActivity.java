@@ -19,6 +19,7 @@ public class AddLiveActivity extends AppCompatActivity {
 
     public static HashMap<String, String> roomMap = new HashMap<>();
     public static HashMap<String, String> roomPasswordMap = new HashMap<>();
+    public static HashMap<String, String> roomKeyMap = new HashMap<>();
 
     static {
         roomMap.put("16401", "计算机401实验室");
@@ -38,6 +39,15 @@ public class AddLiveActivity extends AppCompatActivity {
         roomPasswordMap.put("16406", "406");
         roomPasswordMap.put("16407", "407");
         roomPasswordMap.put("16408", "408");
+
+        roomKeyMap.put("16401", "00650d1b44bb7004b58aabffea06713e2a6IADRIuFvjifVbpTZcd0s0O7fSpiTnTl7Iw4oTXf42bmc+tO62SIAAAAAEAD9/4vjzknaXgEAAQDNSdpe");
+        roomKeyMap.put("16402", "00650d1b44bb7004b58aabffea06713e2a6IADZSwz9fRlepQeM1HhnwU6wOpXhQxdgvoWcFSRCfJ0542nr0LsAAAAAEAD9/4vj6EnaXgEAAQDnSdpe");
+        roomKeyMap.put("16403", "403");
+        roomKeyMap.put("16404", "404");
+        roomKeyMap.put("16405", "405");
+        roomKeyMap.put("16406", "406");
+        roomKeyMap.put("16407", "407");
+        roomKeyMap.put("16408", "408");
     }
 
     @Override
