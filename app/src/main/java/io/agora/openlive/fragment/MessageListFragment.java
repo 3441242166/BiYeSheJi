@@ -64,7 +64,7 @@ public class MessageListFragment extends LazyLoadFragment {
         adapter.setOnItemLongClickListener(new OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(@NonNull BaseQuickAdapter adapter, @NonNull View view, final int position) {
-                final String[] items = {data.get(position).isTop ? "取消置顶" : "置顶", "标记处理", "忽略"};
+                final String[] items = {data.get(position).isTop ? "取消置顶" : "置顶", "标记处理中", "标记已处理", "忽略"};
                 AlertDialog.Builder listDialog =
                         new AlertDialog.Builder(getContext());
                 listDialog.setTitle("实验室");
@@ -78,7 +78,14 @@ public class MessageListFragment extends LazyLoadFragment {
                             }
                             break;
                             case 1:
-                            case 2: {
+                                data.get(position).state = Message.STATE_DOING;
+                                PrefManager.saveMessageList(getContext(), data);
+                                break;
+                            case 2:
+                                data.get(position).state = Message.STATE_FINISH;
+                                PrefManager.saveMessageList(getContext(), data);
+                                break;
+                            case 3: {
                                 data.remove(position);
                                 PrefManager.saveMessageList(getContext(), data);
                             }

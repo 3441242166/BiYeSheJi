@@ -66,7 +66,7 @@ public class AddLiveActivity extends AppCompatActivity {
                 String password = room_password.getText().toString();
 
                 if (TextUtils.equals(password, roomPasswordMap.get(id))) {
-                    PrefManager.addRoom(AddLiveActivity.this, new RoomBean(roomMap.get(id), 0, "wanhao"));
+                    PrefManager.addRoom(AddLiveActivity.this, new RoomBean(roomMap.get(id), 0, id));
                     finish();
                 } else {
                     Toast.makeText(AddLiveActivity.this, "编号或密码错误", Toast.LENGTH_SHORT).show();

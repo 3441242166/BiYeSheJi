@@ -45,7 +45,6 @@ public class VideoGridContainer extends RelativeLayout implements Runnable {
     }
 
     private void init() {
-        setBackgroundResource(R.drawable.live_room_bg);
         mStatMarginBottom = getResources().getDimensionPixelSize(
                 R.dimen.live_stat_margin_bottom);
         mHandler = new Handler(getContext().getMainLooper());

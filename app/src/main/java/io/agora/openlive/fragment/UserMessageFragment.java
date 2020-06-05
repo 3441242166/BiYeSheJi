@@ -11,6 +11,7 @@ import android.view.View;
 import org.greenrobot.eventbus.Subscribe;
 
 import io.agora.openlive.R;
+import io.agora.openlive.activities.AddMessageActivity;
 import io.agora.openlive.activities.DataActivity;
 import io.agora.openlive.activities.HistoryActivity;
 import io.agora.openlive.activities.LoginActivity;
@@ -63,7 +64,9 @@ public class UserMessageFragment extends LazyLoadFragment {
         findViewById(R.id.debug).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addNotificationMessage();
+                startActivity(new Intent(getContext(), AddMessageActivity.class));
+
+                //addNotificationMessage();
             }
         });
     }

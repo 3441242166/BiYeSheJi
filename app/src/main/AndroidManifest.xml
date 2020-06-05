@@ -18,7 +18,8 @@
         android:label="@string/app_name"
         android:roundIcon="@drawable/ic_launcher"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".activities.DataActivity"></activity>
+        <activity android:name=".activities.AddMessageActivity"></activity>
+        <activity android:name=".activities.DataActivity" />
         <activity android:name=".activities.HistoryActivity" />
         <activity android:name=".activities.MessageDetailActivity" />
         <activity

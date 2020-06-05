@@ -6,7 +6,6 @@ public class Message implements Comparable<Message> {
     public static final String STATE_UN_DOING = "未处理";
     public static final String STATE_FINISH = "已结束";
 
-
     public String address;
     public String time;
     public String state;
