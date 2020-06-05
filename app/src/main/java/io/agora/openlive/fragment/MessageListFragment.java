@@ -74,20 +74,21 @@ public class MessageListFragment extends LazyLoadFragment {
                         switch (which) {
                             case 0: {
                                 data.get(position).isTop = !data.get(position).isTop;
-                                PrefManager.saveMessageList(getContext(), data);
+                                PrefManager.changeMessage(getContext(), data.get(position));
                             }
                             break;
                             case 1:
                                 data.get(position).state = Message.STATE_DOING;
-                                PrefManager.saveMessageList(getContext(), data);
+                                PrefManager.changeMessage(getContext(), data.get(position));
                                 break;
                             case 2:
                                 data.get(position).state = Message.STATE_FINISH;
-                                PrefManager.saveMessageList(getContext(), data);
+                                PrefManager.changeMessage(getContext(), data.get(position));
                                 break;
                             case 3: {
+                                Message temp = data.get(position);
                                 data.remove(position);
-                                PrefManager.saveMessageList(getContext(), data);
+                                PrefManager.removeMessage(getContext(), temp);
                             }
                             break;
                         }

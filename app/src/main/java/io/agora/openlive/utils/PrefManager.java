@@ -77,6 +77,32 @@ public class PrefManager {
         EventBus.getDefault().post(new MessageListUpdateEvent());
     }
 
+    public static void changeMessage(Context context, Message bean) {
+        List<Message> list = getMessageList(context);
+        if (list == null)
+            return;
+        for (int i = 0; i< list.size(); i++) {
+            if (list.get(i).equals(bean)) {
+                list.set(i, bean);
+            }
+        }
+        put(context, MESSAGE_LIST, new Gson().toJson(list));
+        EventBus.getDefault().post(new MessageListUpdateEvent());
+    }
+
+    public static void removeMessage(Context context, Message bean) {
+        List<Message> list = getMessageList(context);
+        if (list == null)
+            return;
+        for (int i = 0; i< list.size(); i++) {
+            if (list.get(i).equals(bean)) {
+                list.remove(i);
+            }
+        }
+        put(context, MESSAGE_LIST, new Gson().toJson(list));
+        EventBus.getDefault().post(new MessageListUpdateEvent());
+    }
+
     public static List<Message> getMessageList(Context context) {
         String liveJson = PrefManager.get(context, MESSAGE_LIST);
         List<Message> updateData = new Gson().fromJson(liveJson, new TypeToken<List<Message>>() {

@@ -1,5 +1,7 @@
 package io.agora.openlive.bean;
 
+import androidx.annotation.Nullable;
+
 public class Message implements Comparable<Message> {
 
     public static final String STATE_DOING = "处理中";
@@ -27,5 +29,15 @@ public class Message implements Comparable<Message> {
         } else {
             return 1;
         }
+    }
+
+    @Override
+    public boolean equals(@Nullable Object obj) {
+        if (obj instanceof Message) {
+            Message msg = (Message) obj;
+            return msg.address.equals(address) && msg.notice.equals(notice)
+                    && msg.time.equals(time);
+        }
+        return false;
     }
 }
