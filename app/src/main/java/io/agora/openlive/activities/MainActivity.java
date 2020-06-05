@@ -131,7 +131,7 @@ public class MainActivity extends BaseActivity {
         mTopicEdit.addTextChangedListener(mTextWatcher);
 
         mStartBtn = findViewById(R.id.start_broadcast_button);
-        if (TextUtils.isEmpty(mTopicEdit.getText())) mStartBtn.setEnabled(false);
+        // if (TextUtils.isEmpty(mTopicEdit.getText())) mStartBtn.setEnabled(false);
     }
 
     @Override
@@ -198,7 +198,7 @@ public class MainActivity extends BaseActivity {
 
     public void gotoRoleActivity() {
         String room = mTopicEdit.getText().toString();
-        config().setChannelName(room);
+        config().setChannelName("16401");
         Intent intent = new Intent(MainActivity.this, LiveActivity.class);
         intent.putExtra(io.agora.openlive.Constants.KEY_CLIENT_ROLE, Constants.CLIENT_ROLE_BROADCASTER);
         intent.setClass(getApplicationContext(), LiveActivity.class);

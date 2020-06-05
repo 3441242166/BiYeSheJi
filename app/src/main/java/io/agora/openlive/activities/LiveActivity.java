@@ -59,6 +59,7 @@ public class LiveActivity extends RtcBaseActivity {
         mVideoGridContainer.setStatsManager(statsManager());
 
         rtcEngine().setClientRole(role);
+        rtcEngine().switchCamera();
         if (isBroadcaster) startBroadcast();
     }
 

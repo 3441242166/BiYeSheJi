@@ -9,14 +9,16 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:focusableInTouchMode="true">
+
         <ImageView
             android:id="@+id/main_logo"
             android:layout_width="@dimen/logo_size"
             android:layout_height="@dimen/logo_size"
-            android:layout_centerHorizontal="true"
             android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
             android:layout_marginBottom="@dimen/logo_margin_bottom"
-            android:scaleType="centerCrop"/>
+            android:scaleType="centerCrop"
+            android:visibility="gone" />
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/topic_edit"
@@ -38,9 +40,11 @@
             android:textColor="@color/blue_alpha"
             android:textColorHint="@color/blue_alpha"
             android:textCursorDrawable="@null"
-            android:textSize="@dimen/text_size_normal" />
+            android:textSize="@dimen/text_size_normal"
+            android:visibility="gone" />
 
         <androidx.appcompat.widget.AppCompatTextView
+            android:layout_marginTop="150dp"
             android:id="@+id/start_broadcast_button"
             android:layout_width="150dp"
             android:layout_height="@dimen/start_broadcast_height"
