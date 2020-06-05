@@ -31,11 +31,13 @@
     </LinearLayout>
 
     <View
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="#BFBFBF" />
 
     <LinearLayout
+        android:visibility="gone"
         android:id="@+id/data"
         android:layout_width="match_parent"
         android:layout_height="60dp"
